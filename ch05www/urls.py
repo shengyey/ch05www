@@ -15,7 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from mysite import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', views.homepage, {'testmode':'YES'}),
+    path('about/', views.about),
+    path('about/<int:author_no>/', views.about),
+    path('list/<int:yr>/<int:mon>/<int:day>/', views.listing),
+    path('post/<int:yr>/<int:mon>/<int:day>/<int:post_num>/', views.post),
+    path('post01/<int:yr>/<int:mon>/<int:day>/<int:post_num>/', views.post01, name = 'post-url'),
 ]
